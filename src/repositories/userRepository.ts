@@ -10,7 +10,13 @@ async function getByCPF(cpf: string) {
   return result;
 }
 
+async function getAll() {
+  const result = await prisma.user.findMany();
+  return result;
+}
+
 export const userRepository = {
   createUser,
   getByCPF,
+  getAll
 };

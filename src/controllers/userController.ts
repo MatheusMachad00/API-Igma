@@ -17,7 +17,14 @@ async function getByCPF(req: Request, res: Response) {
   } else res.status(404).send("CPF não encontrado.");
 }
 
+async function getUsers(req: Request, res: Response) {
+  const { page } = req.params;
+  const result = await userService.getAll(Number(page));
+  res.status(200).send(result);
+}
+
 export const userController = {
   createUser,
   getByCPF,
+  getUsers,
 };

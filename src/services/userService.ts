@@ -19,7 +19,30 @@ async function getByCPF(cpf: string) {
   return result;
 }
 
+async function getAll(actualPage: number) {
+  const result = await userRepository.getAll();
+
+  return pagination(result, actualPage);
+}
+
+function pagination(items: object[], actualPage: number) {
+  let result: object[] = [];
+  let totalPage: number = Math.ceil(items.length / 5);
+  let count: number = actualPage * 5 - 5;
+  let delimiter: number = count + 5;
+
+  if (actualPage <= totalPage) {
+    for (let i = count; i < delimiter; i++) {
+      result.push(items[i]);
+      count++;
+    }
+  }
+
+  return result;
+}
+
 export const userService = {
   create,
   getByCPF,
+  getAll,
 };
