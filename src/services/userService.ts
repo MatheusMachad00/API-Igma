@@ -3,19 +3,14 @@ import { userRepository } from "../repositories/userRepository";
 
 async function create(data: TypeNewUserData) {
   const { cpf } = data;
-  let regex = /\d/g;
-  let cpfClean: any = cpf.match(regex);
-  let newCpf: string = cpfClean.join("");
+  const newCPF: string = clearCPF(cpf);
 
-  await userRepository.createUser({ ...data, cpf: newCpf });
+  await userRepository.createUser({ ...data, cpf: newCPF });
 }
 
 async function getByCPF(cpf: string) {
-  let regex = /\d/g;
-  let cpfClean: any = cpf.match(regex);
-  let newCpf: string = cpfClean.join("");
-
-  const result = await userRepository.getByCPF(newCpf);
+  const newCPF: string = clearCPF(cpf);
+  const result = await userRepository.getByCPF(newCPF);
   return result;
 }
 
@@ -23,6 +18,13 @@ async function getAll(actualPage: number) {
   const result = await userRepository.getAll();
 
   return pagination(result, actualPage);
+}
+
+function clearCPF(cpf: string) {
+  let regex = /\d/g;
+  let cpfClean: any = cpf.match(regex);
+  let newCpf: string = cpfClean.join("");
+  return newCpf;
 }
 
 function pagination(items: object[], actualPage: number) {
