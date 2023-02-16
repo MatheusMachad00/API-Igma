@@ -1,11 +1,15 @@
 import { TypeNewUserData } from "../types/userTypes";
 import { userRepository } from "../repositories/userRepository";
+import { cpfValidator } from "../utils/cpfValidator";
 
 async function create(data: TypeNewUserData) {
   const { cpf } = data;
   const newCPF: string = clearCPF(cpf);
 
-  await userRepository.createUser({ ...data, cpf: newCPF });
+  if (cpfValidator.validator(newCPF)) {
+    await userRepository.createUser({ ...data, cpf: newCPF });
+    return true;
+  } else return false;
 }
 
 async function getByCPF(cpf: string) {
