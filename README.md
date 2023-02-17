@@ -4,7 +4,7 @@
 
 ### Como instalar:
 
-#### 1- Você deve executar o comando para instalar todas as dependências.
+#### 1- Após o download da API, vá na pasta raíz e execute o seguinte comando para instalar todas as dependências.
 ```
 npm i
 ```
