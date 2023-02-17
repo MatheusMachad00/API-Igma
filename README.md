@@ -26,9 +26,9 @@ npm run dev
 
 ---
 
-### Como utilizar:
+### Endpoints:
 
-#### - Endpoint /cadastro : 
+#### /cadastro : 
 Você deve fazer uma requisição do tipo POST e enviar um objeto no formato:
 
     {
@@ -38,7 +38,7 @@ Você deve fazer uma requisição do tipo POST e enviar um objeto no formato:
 	}
 Observação: O campo do CPF funciona tanto com a pontuação como só com os números.
 
-#### - Endpoint /usuario-por-cpf :
+#### /usuario-por-cpf :
 Você deve fazer uma requisição do tipo POST e enviar enviar um objeto no formato:
 
     {  
@@ -46,7 +46,7 @@ Você deve fazer uma requisição do tipo POST e enviar enviar um objeto no form
 	}
 Observação: O campo do CPF funciona tanto com a pontuação como só com os números.
 
-#### -Endpoint /pegar-todos-usuarios/:page :
+#### /pegar-todos-usuarios/:page :
 Você deve fazer uma requisição do tipo GET e enviar junto da URL o valor da página que você deseja visualizar, caso a página não tenha nada ele irá retornar um array vazio.
 
     /pegar-todos-usuarios/1
