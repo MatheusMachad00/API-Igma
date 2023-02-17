@@ -6,10 +6,12 @@ async function create(data: TypeNewUserData) {
   const { cpf } = data;
   const newCPF: string = clearCPF(cpf);
 
+  const checkCPF = await getByCPF(cpf);
+  if(checkCPF) throw {type: "Conflict", message: "CPF já cadastrado."};
+
   if (cpfValidator.validator(newCPF)) {
     await userRepository.createUser({ ...data, cpf: newCPF });
-    return true;
-  } else return false;
+  } else throw {type: "Bad_request", message: "CPF inválido."};
 }
 
 async function getByCPF(cpf: string) {

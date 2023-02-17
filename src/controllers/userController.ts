@@ -4,11 +4,9 @@ import { TypeNewUserData } from "../types/userTypes";
 
 async function createUser(req: Request, res: Response) {
   const newUserData: TypeNewUserData = req.body;
-  const result = await userService.create(newUserData);
+  await userService.create(newUserData);
 
-  if (result) {
-    res.sendStatus(201);
-  } else res.status(422).send("CPF inválido.");
+  res.sendStatus(201);
 }
 
 async function getByCPF(req: Request, res: Response) {
