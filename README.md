@@ -9,7 +9,7 @@
 npm i
 ```
 
-#### 2- Você deve criar um arquivo chamado .env na pasta raiz da API com as variáveis mostradas no arquivo .env-exemples. Para a URL de conexão com o PostgreSQL você deve seguir o seguinte exemplo:
+#### 2- Você deve criar um arquivo chamado .env na pasta raiz da API com as variáveis mostradas no arquivo .env-exemple. Para a URL de conexão com o PostgreSQL você deve seguir o seguinte exemplo:
 ```
 DATABASE_URL=postgres://USERNAME:PASSWORD@HOSTNAME:YOUR_PORT/DATABASE_NAME
 ```
